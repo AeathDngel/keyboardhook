@@ -39,9 +39,17 @@ namespace KeyboardHook
 
         }
 
-       
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            //Keyboard hook Zonica
+            hook += e.KeyCode.ToString(); //capture keycode that was pressed
+            label1.Text = String.Empty;
+            label1.Text += hook;
 
-        
+
         }
+
+
+    }
     }
 
