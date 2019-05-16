@@ -8,14 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Diagnostics;
+using System.Windows.Input;
+
 
 namespace KeyboardHook
 {
     public partial class Form2 : Form
     {
-       
-
-       
+        
 
         public Form2()
         {
