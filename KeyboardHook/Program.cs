@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Threading;
 
 namespace KeyboardHook
 {
@@ -36,10 +37,7 @@ namespace KeyboardHook
                 Application.Run();
 
                 UnhookWindowsHookEx(_hookID);
-
-                
-
-        }
+            }
 
 
             private static IntPtr SetHook(LowLevelKeyboardProc proc)

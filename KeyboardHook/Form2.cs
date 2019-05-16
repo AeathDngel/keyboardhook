@@ -96,9 +96,10 @@ namespace KeyboardHook
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            
-            
-            
+
+            Program keyLogger = new Program();
+
+            //keyLogger.startKeylogger();
         }     
 
         private void button1_Click(object sender, EventArgs e)
