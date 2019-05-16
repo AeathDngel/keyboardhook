@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.IO;
+using System.Drawing;
 
 namespace KeyboardHook_ConsoleApp
 {
@@ -20,7 +21,6 @@ namespace KeyboardHook_ConsoleApp
         private static LowLevelKeyboardProc _proc = HookCallback;
 
         private static IntPtr _hookID = IntPtr.Zero;
-
 
         public static void Main()
 
@@ -71,13 +71,25 @@ namespace KeyboardHook_ConsoleApp
             {
 
                 int vkCode = Marshal.ReadInt32(lParam);
-                //
-                //
-                //VERANDER HIER OM NA FILES TO TE WRITE
-                //
-                //      |
-                //      V
+                
                 Console.WriteLine((Keys)vkCode);
+
+                if((Keys)vkCode == Keys.Left)
+                {
+                    Cursor.Position = new Point(Cursor.Position.X - 10, Cursor.Position.Y);
+                }
+                else if((Keys)vkCode == Keys.Right)
+                {
+                    Cursor.Position = new Point(Cursor.Position.X + 10, Cursor.Position.Y);
+                }
+                else if((Keys)vkCode == Keys.Up)
+                {
+                    Cursor.Position = new Point(Cursor.Position.X, Cursor.Position.Y - 10);
+                }
+                else if((Keys)vkCode == Keys.Down)
+                {
+                    Cursor.Position = new Point(Cursor.Position.X, Cursor.Position.Y + 10);
+                }
 
             }
 
