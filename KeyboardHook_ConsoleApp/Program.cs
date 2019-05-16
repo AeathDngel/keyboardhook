@@ -14,9 +14,7 @@ namespace KeyboardHook_ConsoleApp
     class Program
     {
         public static int[] lastEntered { get; set; }
-
-
-
+        
         public static bool writeToFile { get; set; }
 
         private const int WH_KEYBOARD_LL = 13;
