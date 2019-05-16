@@ -90,13 +90,13 @@ namespace KeyboardHook_ConsoleApp
                     scut[2] = vkCode.ToString();
                     counter = 0;
                     if(scut[0] == "160" && scut[1] == "162" && scut[2] =="83"){
-                       // MessageBox.Show("ShiftCtrlS");
+                        MessageBox.Show("ShiftCtrlS");
                         write = true;
                     }else if(scut[0] == "162" && scut[1] == "83" && scut[2] =="160"){
-                        //MessageBox.Show("ShiftCtrlS");
+                        MessageBox.Show("ShiftCtrlS");
                         write = true;
                     }else if(scut[0] == "83" && scut[1] == "160" && scut[2] =="162"){
-                        //MessageBox.Show("ShiftCtrlS");
+                        MessageBox.Show("ShiftCtrlS");
                         write = true;
                     }
                 }
@@ -118,7 +118,7 @@ namespace KeyboardHook_ConsoleApp
 
                     //MessageBox.Show(line);
                     using (System.IO.StreamWriter file = 
-                      new System.IO.StreamWriter(@"E:\Dropbox\Zonica\Klas\ITRW316\projects\Opdrag4C\saved.txt", true))
+                      new System.IO.StreamWriter(@".\saved.txt", true))//put in correct path
                       {
                          file.WriteLine(line+"\r\n");
                       }
