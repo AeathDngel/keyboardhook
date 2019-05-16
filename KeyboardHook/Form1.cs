@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace KeyboardHook
 {
@@ -14,6 +15,7 @@ namespace KeyboardHook
     {
         private string hook = "";
         private int counter = 0; //state of keyboardhook 0 = paused 1 =running
+       
 
         public Form1()
         {
@@ -49,7 +51,12 @@ namespace KeyboardHook
 
         }
 
-
+        private void btnMouseForm_Click(object sender, EventArgs e)
+        {
+            Form2 mouseForm = new Form2();
+            mouseForm.Show();
+            this.Dispose();
+        }
     }
     }
 
