@@ -31,10 +31,7 @@ namespace KeyboardHook
             this.Hide();
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -71,16 +68,7 @@ namespace KeyboardHook
             }
         }
 
-        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-
-        }
-
-        private void timer1_Tick_1(object sender, EventArgs e)
-        {
-      
-        }
-
+   
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
         }

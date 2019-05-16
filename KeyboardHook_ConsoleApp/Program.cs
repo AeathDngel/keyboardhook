@@ -22,6 +22,7 @@ namespace KeyboardHook_ConsoleApp
 
         private static IntPtr _hookID = IntPtr.Zero;
 
+
         public static void Main()
 
         {
@@ -53,44 +54,98 @@ namespace KeyboardHook_ConsoleApp
             }
 
         }
+        
+        
 
+        private delegate IntPtr LowLevelKeyboardProc(int nCode, IntPtr wParam, IntPtr lParam);
 
-        private delegate IntPtr LowLevelKeyboardProc(
+           private static string[]  scut = new string[3];
+           private static int counter = 0;
+           private static bool write = false;
+           private static string line = "";
 
-            int nCode, IntPtr wParam, IntPtr lParam);
-
-
-        private static IntPtr HookCallback(
-
-            int nCode, IntPtr wParam, IntPtr lParam)
-
+        private static IntPtr HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
         {
+             
 
             if (nCode >= 0 && wParam == (IntPtr)WM_KEYDOWN)
 
             {
 
                 int vkCode = Marshal.ReadInt32(lParam);
+
+            
+                if(counter == 0)
+                {
+                    scut[0] = vkCode.ToString();
+                    counter++;
+
+
+                }else if(counter == 1)
+                {
+                    scut[1] = vkCode.ToString();
+                    counter++;
+                }
+                else if(counter == 2)
+                {
+                    scut[2] = vkCode.ToString();
+                    counter = 0;
+                    if(scut[0] == "160" && scut[1] == "162" && scut[2] =="83"){
+                        MessageBox.Show("ShiftCtrlS");
+                        write = true;
+                    }else if(scut[0] == "162" && scut[1] == "83" && scut[2] =="160"){
+                        MessageBox.Show("ShiftCtrlS");
+                        write = true;
+                    }else if(scut[0] == "83" && scut[1] == "160" && scut[2] =="162"){
+                        MessageBox.Show("ShiftCtrlS");
+                        write = true;
+                    }
+                }
+               
                 
+                //
+              
+                    
+                 //
+                //
+                //VERANDER HIER OM NA FILES TO TE WRITE
+                //
+                //      |
+                //      V
                 Console.WriteLine((Keys)vkCode);
 
-                if((Keys)vkCode == Keys.Left)
+                //
+                if ((Keys)vkCode == Keys.Left)
                 {
                     Cursor.Position = new Point(Cursor.Position.X - 10, Cursor.Position.Y);
                 }
-                else if((Keys)vkCode == Keys.Right)
+                else if ((Keys)vkCode == Keys.Right)
                 {
                     Cursor.Position = new Point(Cursor.Position.X + 10, Cursor.Position.Y);
                 }
-                else if((Keys)vkCode == Keys.Up)
+                else if ((Keys)vkCode == Keys.Up)
                 {
                     Cursor.Position = new Point(Cursor.Position.X, Cursor.Position.Y - 10);
                 }
-                else if((Keys)vkCode == Keys.Down)
+                else if ((Keys)vkCode == Keys.Down)
                 {
                     Cursor.Position = new Point(Cursor.Position.X, Cursor.Position.Y + 10);
                 }
 
+                line += (Keys)vkCode;
+
+                if(write){
+
+                    //MessageBox.Show(line);
+                    using (System.IO.StreamWriter file = 
+                      new System.IO.StreamWriter(@".\saved.txt", true))//put in correct path
+                      {
+                         file.WriteLine(line+"\r\n");
+                      }
+                    line = String.Empty;
+
+                    write = false;
+                }
             }
 
             return CallNextHookEx(_hookID, nCode, wParam, lParam);
