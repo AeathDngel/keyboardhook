@@ -14,7 +14,7 @@ using System.Windows.Input;
 
 namespace KeyboardHook
 {
-    public partial class Form2 : Form
+    public partial class MouseListener : Form
     {
 
         //Get Import code from pinvoke.net for each hook method used.
@@ -71,6 +71,8 @@ namespace KeyboardHook
 
                 int vkCode = Marshal.ReadInt32(lParam);
 
+                
+
                 Console.WriteLine((Keys)vkCode);
 
             }
@@ -86,7 +88,7 @@ namespace KeyboardHook
         }
 
 
-        public Form2()
+        public MouseListener()
         {
             InitializeComponent();
             _hookID = SetHook(_proc);
@@ -97,9 +99,9 @@ namespace KeyboardHook
         private void Form2_Load(object sender, EventArgs e)
         {
 
-            Program keyLogger = new Program();
-
-            //keyLogger.startKeylogger();
+            KeyLogger keyLogger = new KeyLogger();
+            keyLogger.Show();
+            
         }     
 
         private void button1_Click(object sender, EventArgs e)

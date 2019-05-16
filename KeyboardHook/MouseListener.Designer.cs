@@ -1,6 +1,6 @@
 ﻿namespace KeyboardHook
 {
-    partial class Form2
+    partial class MouseListener
     {
         /// <summary>
         /// Required designer variable.

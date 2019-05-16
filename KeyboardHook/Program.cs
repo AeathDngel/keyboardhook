@@ -30,11 +30,11 @@ namespace KeyboardHook
 
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new Form2());
+                Application.Run(new MouseListener());
 
                 _hookID = SetHook(_proc);
 
-                Application.Run();
+                //Application.Run();
 
                 UnhookWindowsHookEx(_hookID);
             }
