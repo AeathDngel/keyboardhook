@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.IO;
+using System.Drawing;
 
 namespace KeyboardHook_ConsoleApp
 {
@@ -112,7 +113,26 @@ namespace KeyboardHook_ConsoleApp
                 //      |
                 //      V
                 Console.WriteLine((Keys)vkCode);
-                line+= (Keys)vkCode;
+
+                //
+                if ((Keys)vkCode == Keys.Left)
+                {
+                    Cursor.Position = new Point(Cursor.Position.X - 10, Cursor.Position.Y);
+                }
+                else if ((Keys)vkCode == Keys.Right)
+                {
+                    Cursor.Position = new Point(Cursor.Position.X + 10, Cursor.Position.Y);
+                }
+                else if ((Keys)vkCode == Keys.Up)
+                {
+                    Cursor.Position = new Point(Cursor.Position.X, Cursor.Position.Y - 10);
+                }
+                else if ((Keys)vkCode == Keys.Down)
+                {
+                    Cursor.Position = new Point(Cursor.Position.X, Cursor.Position.Y + 10);
+                }
+
+                line += (Keys)vkCode;
 
                 if(write){
 
