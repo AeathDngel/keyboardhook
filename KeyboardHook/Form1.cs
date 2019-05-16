@@ -50,31 +50,15 @@ namespace KeyboardHook
             t.Start();
         }
 
-        public void Keyboard() {
-
-          
-
-
-
-
-        }
-
-
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-
-           
-               
                 //Keyboard hook Zonica
                 hook += e.KeyCode.ToString(); //capture keycode that was pressed
-               
-
-            
 
             if (e.Control && e.Shift && e.KeyCode.ToString() == "C")
             {
                
-                    MessageBox.Show(hook);
+                  //  MessageBox.Show(hook);
                     counter--;
                     String path = @".\abc.txt";
 
