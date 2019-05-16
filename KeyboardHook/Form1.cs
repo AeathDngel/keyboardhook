@@ -7,8 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Input;
-using System.Threading;
+
 using System.IO;
 
 namespace KeyboardHook
@@ -46,8 +45,7 @@ namespace KeyboardHook
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Thread t = new Thread(Keyboard);
-            t.Start();
+            
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
